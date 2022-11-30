@@ -254,13 +254,9 @@ class GreedyBestFirstSearch(Algorithm):
                             nodeVisited = True
 
                     if not nodeVisited:
-                        if heur < 4:
-                            nodeToAppend = Node(board=stateBoard, parent=self.visited.queue[0][1],cost= self.costFunction(stateBoard,hselection=heur), Move = moves)
-                            self.visited.put([nodeToAppend.stateCost,nodeToAppend])
-                        else:
-                            nodeToAppend = Node(board=stateBoard, parent=self.visited.queue[0][1],
+                        nodeToAppend = Node(board=stateBoard, parent=self.visited.queue[0][1],
                                                 cost=self.costFunction(boardToExplore, hselection=heur), Move=moves)
-                            self.visited.put([nodeToAppend.stateCost, nodeToAppend])
+                        self.visited.put([nodeToAppend.stateCost, nodeToAppend])
             else:
                 self.solutions.append(self.visited.queue[0][1].getSolutionPath())
                 self.solutionPath.append(self.visited.queue[0][1].tracePath())

@@ -22,8 +22,8 @@ if __name__ == "__main__":
             if line[37:].strip() != "":
                 board.setfuels(line[37:])
 
-    algorithm = alg.GreedyBestFirstSearch(boards[5])
-    algorithm.search(3)
+    algorithm = alg.GreedyBestFirstSearch(boards[3])
+    algorithm.search(2)
     algorithm.printSolutionsBoard()
     # for lines in algorithm.writeSolution():
     #     outputfile.write(lines)
