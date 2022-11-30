@@ -246,7 +246,6 @@ class Board:
             else:
                 j = j + 1
 
-        #print(h)
         return h
 
     def getNumberOfblockedvehicles(self):

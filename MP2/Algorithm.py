@@ -231,7 +231,7 @@ class GreedyBestFirstSearch(Algorithm):
         initialNode = Node(board=self.board,parent=None,cost=0)
         self.visited.put([initialNode.stateCost,initialNode])
 
-        while not self.visited.empty() and self.numOfSolution != 1:
+        while not self.visited.empty() or self.numOfSolution != 1:
 
             self.closed.append(self.visited.queue[0][1])
             expandednodes = len(self.closed)
@@ -240,20 +240,27 @@ class GreedyBestFirstSearch(Algorithm):
 
             if boardToExplore.checkWin() != True:
 
-
                 for moves in boardToExplore.exploreMoves():
                     stateBoard = pickle.loads(pickle.dumps(boardToExplore, -1))
                     stateBoard.moveCar(moves[0],moves[1],moves[2])
                     nodeVisited = False
+
                     for vals in self.closed:
                         if vals.boardState.board == stateBoard.board:
                             nodeVisited = True
+
                     for node in self.visited.queue:
                         if node[1].boardState.board == stateBoard.board:
                             nodeVisited = True
+
                     if not nodeVisited:
-                        nodeToAppend = Node(board=stateBoard, parent=self.visited.queue[0][1],cost=  self.costFunction(boardToExplore,hselection=heur), Move = moves)
-                        self.visited.put([nodeToAppend.stateCost,nodeToAppend])
+                        if heur < 4:
+                            nodeToAppend = Node(board=stateBoard, parent=self.visited.queue[0][1],cost= self.costFunction(stateBoard,hselection=heur), Move = moves)
+                            self.visited.put([nodeToAppend.stateCost,nodeToAppend])
+                        else:
+                            nodeToAppend = Node(board=stateBoard, parent=self.visited.queue[0][1],
+                                                cost=self.costFunction(boardToExplore, hselection=heur), Move=moves)
+                            self.visited.put([nodeToAppend.stateCost, nodeToAppend])
             else:
                 self.solutions.append(self.visited.queue[0][1].getSolutionPath())
                 self.solutionPath.append(self.visited.queue[0][1].tracePath())
@@ -262,6 +269,8 @@ class GreedyBestFirstSearch(Algorithm):
                 print("expanded nodes: ", expandednodes)
                 endtime = time.time()
                 self.runtime = endtime - starttime
+                break
+
             self.searchpath.append(self.visited.get())
 
         if self.numOfSolution == 0 and self.visited.empty():
@@ -415,6 +424,7 @@ class GreedyBestFirstSearch(Algorithm):
             h = board.heuresticThree()
         elif i == 4:
             h = board.heuresticFour()
+        print(h)
         return h
 class Astar(Algorithm):
     def search(self, h: int):

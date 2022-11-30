@@ -22,11 +22,11 @@ if __name__ == "__main__":
             if line[37:].strip() != "":
                 board.setfuels(line[37:])
 
-    algorithm = alg.UniformedCostSearch(boards[0])
-    algorithm.search()
-
-    for lines in algorithm.writeSolution():
-        outputfile.write(lines)
+    algorithm = alg.GreedyBestFirstSearch(boards[5])
+    algorithm.search(3)
+    algorithm.printSolutionsBoard()
+    # for lines in algorithm.writeSolution():
+    #     outputfile.write(lines)
 
     # solfileUCS = open(output_directory + "gbfs-h4-sol-" + str(1) + ".txt", 'w')
     # searchfileUCS = open(output_directory + "gbfs-h4-search-" + str(1) + ".txt", 'w')
