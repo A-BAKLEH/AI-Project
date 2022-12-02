@@ -28,4 +28,4 @@ Each car has a list of cells it covers, a fuel value and an orientation
 The Algorithm.py file contains the implementations of all 3 of our search algorithms, as well as the writeSearch and writeSolution function for each.
 This file also contains the node data structure, which has a boardstate,parent and cost. We use this data structure to store our various states and calculate the solutions based on their cost.
 
-The PuzzleGenerator.py file generates a text file containing the various puzzles we can test our algorithm on, and takes a minimum and maximum number of vehicles to populate the puzzle with.
+The PuzzleGenerator.py file generates a text file containing the code to generate the various puzzles we can test our algorithm on, and takes a minimum and maximum number of vehicles to populate the puzzle with.
