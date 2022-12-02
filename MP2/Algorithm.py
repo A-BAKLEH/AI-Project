@@ -190,6 +190,11 @@ class UniformedCostSearch(Algorithm):
 
         return Strings
 
+    def solutionPathLength(self):
+        if self.numOfSolution >= 1:
+            return str(len(self.solutions[0])-1)
+        else:
+            return 0
 
     def getsolmoves(self):
         line = ""
@@ -231,8 +236,9 @@ class GreedyBestFirstSearch(Algorithm):
         initialNode = Node(board=self.board,parent=None,cost=0)
         self.visited.put([initialNode.stateCost,initialNode])
 
-        while not self.visited.empty() or self.numOfSolution != 1:
-
+        while self.numOfSolution != 1:
+            if self.visited.empty():
+                break
             self.closed.append(self.visited.queue[0][1])
             expandednodes = len(self.closed)
 
@@ -255,7 +261,9 @@ class GreedyBestFirstSearch(Algorithm):
 
                     if not nodeVisited:
                         nodeToAppend = Node(board=stateBoard, parent=self.visited.queue[0][1],
-                                                cost=self.costFunction(stateBoard, hselection=heur), Move=moves)
+                                                cost=self.costFunction(self.visited.queue[0][0], stateBoard,  heur), Move=moves)
+
+                        self.returnh(stateBoard,heur)
                         self.visited.put([nodeToAppend.stateCost, nodeToAppend])
             else:
                 self.solutions.append(self.visited.queue[0][1].getSolutionPath())
@@ -272,7 +280,11 @@ class GreedyBestFirstSearch(Algorithm):
         if self.numOfSolution == 0 and self.visited.empty():
             print("No Solution")
 
-
+    def solutionPathLength(self):
+        if self.numOfSolution >= 1:
+            return str(len(self.solutions[0])-1)
+        else:
+            return 0
     def printSolutionsBoard(self):
         for solution in self.solutions:
             for board in solution:
@@ -401,16 +413,21 @@ class GreedyBestFirstSearch(Algorithm):
 
 
     # function F = 0 + H(x)
-    def costFunction(self, board, hselection):
-        #print(move)
-        if hselection == 1:
-            return board.getNumberOfblockedvehicles()
-        elif hselection == 2:
-            return board.getblockedpositions()
-        elif hselection == 3:
-            return board.heuresticThree()
-        elif hselection == 4:
-           return board.heuresticFour()
+    def costFunction(self,depth, board, i):
+        if i == 1:
+            h = board.getNumberOfblockedvehicles()
+        elif i == 2:
+            h = board.getblockedpositions()
+        elif i == 3:
+            h = board.heuresticThree()
+        elif i == 4:
+            h = board.heuresticFour()
+
+        layer = depth + 1
+        f = layer + h
+        return f
+        pass
+
     def returnh(self,board,i):
         if i == 1:
             h = board.getNumberOfblockedvehicles()
@@ -454,7 +471,7 @@ class Astar(Algorithm):
                         if node[1].boardState.board == stateBoard.board:
                             nodeVisited = True
                     if not nodeVisited:
-                        nodeToAppend = Node(board=stateBoard, parent=self.visited.queue[0][1], cost=self.costFunction(self.visited.queue[0][0], boardToExplore,  h),
+                        nodeToAppend = Node(board=stateBoard, parent=self.visited.queue[0][1], cost=self.costFunction(self.visited.queue[0][0], stateBoard,  h),
                                             Move= moves)
                         nodeToAppend.g = self.returng(self.visited.queue[0][0])
                         nodeToAppend.h = self.returnh(nodeToAppend.boardState,h)
@@ -481,7 +498,11 @@ class Astar(Algorithm):
             for board in solution:
                 board.printBoard()
             print("--------------------------------------------------------------------")
-
+    def solutionPathLength(self):
+        if self.numOfSolution >= 1:
+            return str(len(self.solutions[0])-1)
+        else:
+            return 0
     def printSolutions(self):
 
         for solution in self.solutions:

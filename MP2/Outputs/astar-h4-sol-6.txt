@@ -1,0 +1,65 @@
+Inital Board Configuration: BB.G.HE..G.HEAAG.I..FCCIDDF..I..F...
+
+B  B  .  G  .  H  
+E  .  .  G  .  H  
+E  A  A  G  .  I  
+.  .  F  C  C  I  
+D  D  F  .  .  I  
+.  .  F  .  .  .  
+
+
+
+
+Car Fuel Available: A:100 B:100 C:100 D:100 E:100 F:100 G:100 H:100 I:100 
+Runtime: 0.2629537582397461 seconds.
+Search path length: 602 states.
+
+Solution Path Length: 32 moves.
+
+Solution Path: I Down 1; B Right 1; E Up 1; A Left 1; F Up 2; D Right 3; F Down 2; A Right 1; E Down 4; B Left 1; A Left 1; F Up 3; C Left 3; F Down 3; G Down 1; H Down 1; B Right 4; G Up 1; F Up 3; C Right 3; F Down 3; A Right 1; E Up 4; A Left 1; F Up 3; C Left 3; D Left 3; F Down 3; G Down 3; B Left 3; H Up 1; A Right 4; 
+
+
+I Down 1		BB.G.HE..G.HEAAG....FCCIDDF..I..F..I
+B Right 1		.BBG.HE..G.HEAAG....FCCIDDF..I..F..I
+E Up 1		EBBG.HE..G.H.AAG....FCCIDDF..I..F..I
+A Left 1		EBBG.HE..G.HAA.G....FCCIDDF..I..F..I
+F Up 2		EBBG.HE.FG.HAAFG....FCCIDD...I.....I
+D Right 3		EBBG.HE.FG.HAAFG....FCCI...DDI.....I
+F Down 2		EBBG.HE..G.HAA.G....FCCI..FDDI..F..I
+A Right 1		EBBG.HE..G.H.AAG....FCCI..FDDI..F..I
+E Down 4		.BBG.H...G.H.AAG....FCCIE.FDDIE.F..I
+B Left 1		BB.G.H...G.H.AAG....FCCIE.FDDIE.F..I
+A Left 1		BB.G.H...G.HAA.G....FCCIE.FDDIE.F..I
+F Up 3		BBFG.H..FG.HAAFG.....CCIE..DDIE....I
+C Left 3		BBFG.H..FG.HAAFG..CC...IE..DDIE....I
+F Down 3		BB.G.H...G.HAA.G..CCF..IE.FDDIE.F..I
+G Down 1		BB...H...G.HAA.G..CCFG.IE.FDDIE.F..I
+H Down 1		BB.......G.HAA.G.HCCFG.IE.FDDIE.F..I
+B Right 4		....BB...G.HAA.G.HCCFG.IE.FDDIE.F..I
+G Up 1		...GBB...G.HAA.G.HCCF..IE.FDDIE.F..I
+F Up 3		..FGBB..FG.HAAFG.HCC...IE..DDIE....I
+C Right 3		..FGBB..FG.HAAFG.H...CCIE..DDIE....I
+F Down 3		...GBB...G.HAA.G.H..FCCIE.FDDIE.F..I
+A Right 1		...GBB...G.H.AAG.H..FCCIE.FDDIE.F..I
+E Up 4		E..GBBE..G.H.AAG.H..FCCI..FDDI..F..I
+A Left 1		E..GBBE..G.HAA.G.H..FCCI..FDDI..F..I
+F Up 3		E.FGBBE.FG.HAAFG.H...CCI...DDI.....I
+C Left 3		E.FGBBE.FG.HAAFG.HCC...I...DDI.....I
+D Left 3		E.FGBBE.FG.HAAFG.HCC...IDD...I.....I
+F Down 3		E..GBBE..G.HAA.G.HCCF..IDDF..I..F..I
+G Down 3		E...BBE....HAA...HCCFG.IDDFG.I..FG.I
+B Left 3		EBB...E....HAA...HCCFG.IDDFG.I..FG.I
+H Up 1		EBB..HE....HAA....CCFG.IDDFG.I..FG.I
+A Right 4		EBB..HE....H....AACCFG.IDDFG.I..FG.I
+
+Car Fuel Remaining: A:91 B:91 C:91 D:94 E:91 F:78 G:95 H:98 I:99 
+E  B  B  .  .  H  
+E  .  .  .  .  H  
+.  .  .  .  A  A  
+C  C  F  G  .  I  
+D  D  F  G  .  I  
+.  .  F  G  .  I  
+
+
+
+
