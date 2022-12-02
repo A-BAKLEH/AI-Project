@@ -17,15 +17,15 @@ In this file you can either generate a text file with puzzles, or provide your o
 Once you run it, the search and solution files for these puzzles will be generated using all 3 search algorithms and all 4 heuristics.
 These search and solution files will be written to the output folder
 
-The Board.py file contains all our game rules(moveCar,exploreMoves etc.), as well as the data structure for the board.
+2.) The Board.py file contains all our game rules(moveCar,exploreMoves etc.), as well as the data structure for the board.
 Each board is a 6x6 grid with cars on it, these cars being stored in a list
 Each board also has a list of possible moves each car can make.
 The Board class also contains the implementations for all 4 of our heuristics
 
-The Car.py file contains the data structure for each of our cars.
+3.) The Car.py file contains the data structure for each of our cars.
 Each car has a list of cells it covers, a fuel value and an orientation
 
-The Algorithm.py file contains the implementations of all 3 of our search algorithms, as well as the writeSearch and writeSolution function for each.
+4.) The Algorithm.py file contains the implementations of all 3 of our search algorithms, as well as the writeSearch and writeSolution function for each.
 This file also contains the node data structure, which has a boardstate,parent and cost. We use this data structure to store our various states and calculate the solutions based on their cost.
 
-The PuzzleGenerator.py file generates a text file containing the various puzzles we can test our algorithm on, and takes a minimum and maximum number of vehicles to populate the puzzle with.
+5.) The PuzzleGenerator.py file generates a text file containing the various puzzles we can test our algorithm on, and takes a minimum and maximum number of vehicles to populate the puzzle with.
