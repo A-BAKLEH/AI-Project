@@ -136,7 +136,8 @@ class Board:
             self.isWon = True
             print("Game Won")
         else:
-            print("Puzzle still not completed")
+            pass
+            #print("Puzzle still not completed")
         return self.isWon
 
     #My contract is that the user is supposed to know the correct number of moves; otherwise, I will fail

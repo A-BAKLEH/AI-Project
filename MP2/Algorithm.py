@@ -263,7 +263,6 @@ class GreedyBestFirstSearch(Algorithm):
                         nodeToAppend = Node(board=stateBoard, parent=self.visited.queue[0][1],
                                                 cost=self.costFunction(self.visited.queue[0][0], stateBoard,  heur), Move=moves)
 
-                        self.returnh(stateBoard,heur)
                         self.visited.put([nodeToAppend.stateCost, nodeToAppend])
             else:
                 self.solutions.append(self.visited.queue[0][1].getSolutionPath())

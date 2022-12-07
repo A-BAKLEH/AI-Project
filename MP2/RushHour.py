@@ -7,9 +7,9 @@ import xlsxwriter
 if __name__ == "__main__":
     input_directory = ""
 
-    output_directory = "Outputs/"
+    output_directory = "OutputsDemo/"
 
-    inputFile = open(input_directory+"sample-input.txt", 'r')
+    inputFile = open(input_directory+"demo-120.txt", 'r')
 
     boards = []
 
@@ -21,7 +21,7 @@ if __name__ == "__main__":
             if line[37:].strip() != "":
                 board.setfuels(line[37:])
 
-    for i in range(len(boards)):
+    for i in range(2,3):
         solfileUCS = open(output_directory + "ucs-sol-" + str(i+1) + ".txt", 'w')
         searchfileUCS = open(output_directory + "ucs-search-" + str(i+1) + ".txt", 'w')
 
@@ -62,58 +62,58 @@ if __name__ == "__main__":
             searchfileUCS.write(lines + "\n")
 
 
-    databook = xlsxwriter.Workbook('Outputs/Datasheet.xlsx')
-    datasheet = databook.add_worksheet()
-
-    datasheet.write('A1','Puzzle Number')
-    datasheet.write('B1','Algorithm')
-    datasheet.write('C1','Heuristic')
-    datasheet.write('D1','Solution Length')
-    datasheet.write('E1','SearchPath Length')
-    datasheet.write('F1','Execution Time')
-
-    row = 1
-
-    for i in range(50):
-        puzzle = pz.puzzleGenerator()
-        puzzle.numVehiclesRange = [8,12]
-        boardGen = puzzle.generateBoard()
-
-        ucsSolver = alg.UniformedCostSearch(boardGen)
-        ucsSolver.search()
-
-        datasheet.write(row,0,i+1)
-        datasheet.write(row,1,"UCS")
-        datasheet.write(row,2,"N/A")
-        datasheet.write(row,3,int(ucsSolver.solutionPathLength()))
-        datasheet.write(row,4,ucsSolver.spathlength)
-        datasheet.write(row,5,ucsSolver.runtime)
-        row += 1
-
-        for j in range(4):
-            gbfsSolver = alg.GreedyBestFirstSearch(boardGen)
-
-            gbfsSolver.search(j+1)
-
-            datasheet.write(row, 0, i + 1)
-            datasheet.write(row, 1, "GBFS")
-            datasheet.write(row, 2, j+1)
-            datasheet.write(row, 3, int(gbfsSolver.solutionPathLength()))
-            datasheet.write(row, 4, gbfsSolver.spathlength)
-            datasheet.write(row, 5, gbfsSolver.runtime)
-
-            row += 1
-        for j in range(4):
-            aStarSolver = alg.Astar(boardGen)
-            aStarSolver.search(j+1)
-
-            datasheet.write(row, 0, i + 1)
-            datasheet.write(row, 1, "A*")
-            datasheet.write(row, 2, j+1)
-            datasheet.write(row, 3, int(aStarSolver.solutionPathLength()))
-            datasheet.write(row, 4, aStarSolver.spathlength)
-            datasheet.write(row, 5, aStarSolver.runtime)
-            row +=1
-
-    databook.close()
+    # databook = xlsxwriter.Workbook('Outputs/Datasheet.xlsx')
+    # datasheet = databook.add_worksheet()
+    #
+    # datasheet.write('A1','Puzzle Number')
+    # datasheet.write('B1','Algorithm')
+    # datasheet.write('C1','Heuristic')
+    # datasheet.write('D1','Solution Length')
+    # datasheet.write('E1','SearchPath Length')
+    # datasheet.write('F1','Execution Time')
+    #
+    # row = 1
+    #
+    # for i in range(50):
+    #     puzzle = pz.puzzleGenerator()
+    #     puzzle.numVehiclesRange = [8,12]
+    #     boardGen = puzzle.generateBoard()
+    #
+    #     ucsSolver = alg.UniformedCostSearch(boardGen)
+    #     ucsSolver.search()
+    #
+    #     datasheet.write(row,0,i+1)
+    #     datasheet.write(row,1,"UCS")
+    #     datasheet.write(row,2,"N/A")
+    #     datasheet.write(row,3,int(ucsSolver.solutionPathLength()))
+    #     datasheet.write(row,4,ucsSolver.spathlength)
+    #     datasheet.write(row,5,ucsSolver.runtime)
+    #     row += 1
+    #
+    #     for j in range(4):
+    #         gbfsSolver = alg.GreedyBestFirstSearch(boardGen)
+    #
+    #         gbfsSolver.search(j+1)
+    #
+    #         datasheet.write(row, 0, i + 1)
+    #         datasheet.write(row, 1, "GBFS")
+    #         datasheet.write(row, 2, j+1)
+    #         datasheet.write(row, 3, int(gbfsSolver.solutionPathLength()))
+    #         datasheet.write(row, 4, gbfsSolver.spathlength)
+    #         datasheet.write(row, 5, gbfsSolver.runtime)
+    #
+    #         row += 1
+    #     for j in range(4):
+    #         aStarSolver = alg.Astar(boardGen)
+    #         aStarSolver.search(j+1)
+    #
+    #         datasheet.write(row, 0, i + 1)
+    #         datasheet.write(row, 1, "A*")
+    #         datasheet.write(row, 2, j+1)
+    #         datasheet.write(row, 3, int(aStarSolver.solutionPathLength()))
+    #         datasheet.write(row, 4, aStarSolver.spathlength)
+    #         datasheet.write(row, 5, aStarSolver.runtime)
+    #         row +=1
+    #
+    # databook.close()
 
